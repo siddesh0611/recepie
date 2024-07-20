@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Login</h1>
+    </div>
+    <div class="container">
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div>
+
+                <label for="emailId">Email ID:</label>
+                <input type="text" name="emailId" id="emailId" required>
+
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" required>
+
+                <button type="submit">Sign Up</button>
+            </div>
+            <div id="message" style="color: crimson;"></div>
+        </form>
+    </div>
+    <div>
+        <label for="signUp">New user:</label>
+        <a href="../signup/signup.html" name="signUp">signup</a>
+    </div>
+
+    <script src="./login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+
+</html>

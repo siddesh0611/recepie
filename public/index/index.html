@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+    <title>Document</title>
+    <style>
+        button.active {
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Home recipes</h1>
+    </div>
+    <div>
+        <a href="./index.html">Home</a>
+        <a href="./recipesForm.html">Upload recipes</a>
+        <a href="./user.html">Profile</a>
+        <a href="../admin/admin.html">admin</a>
+    </div>
+    <div>
+        <form id="filterForm">
+            <label for="veg">Veg:</label>
+            <select name="veg" id="veg">
+                <option value="">Any</option>
+                <option value="true">Vegetarian</option>
+                <option value="false">Non-Vegetarian</option>
+            </select>
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine">
+            <label for="recipesType">Recipe Type:</label>
+            <input type="text" id="recipesType" name="recipesType">
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
+
+    <div>
+        <input type="text" id="searchBar" placeholder="Search recipes...">
+    </div>
+
+    <div id="recipesContainer"></div>
+    <div id="pagination"></div>
+
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <link rel="stylesheet" href="../css/signup.css"> -->
+</body>
+
+</html>

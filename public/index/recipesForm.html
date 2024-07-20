@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Upload you recipes</h1>
+    </div>
+    <div class="container">
+        <form id="recipesForm" onsubmit="uploadRecipes(event)">
+            <label for="recipesName">Recipe Name:</label>
+            <input type="text" name="recipesName" id="recipesName">
+
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" name="cuisine" id="cuisine">
+
+            <label for="veg">veg</label>
+            <input type="radio" name="veg" id="veg" value="veg">
+            <label for="veg">non veg</label>
+            <input type="radio" name="veg" id="nonVeg" value="nonVeg">
+
+            <label for="recipesType">Recipe Type</label>
+            <select name="recipesType" id="recipesType">
+                <option value="starter">Starter</option>
+                <option value="mainCourse">Main Course</option>
+                <option value="dessert">Dessert</option>
+                <option value="beverage">Beverage</option>
+            </select>
+
+            <label for="img">Image</label>
+            <input type="file" name="img" id="img" accept="image/*">
+
+            <label for="ingredients">Ingredients</label>
+            <textarea name="ingredients" id="ingredients" rows="4"></textarea>
+
+            <label for="method">Method:</label>
+            <textarea name="method" id="method" rows="4"></textarea>
+
+            <label for="cookingTime">Cooking Time:</label>
+            <input type="time" name="cookingTime" id="cookingTime">
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+    <script src="./recipesForm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <link rel="stylesheet" href="../css/signup.css"> -->
+</body>
+
+</html>
