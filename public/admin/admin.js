@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchUsers() {
     try {
-        const response = await axios.get('http://localhost:3000/admin/getUsers', {
+        const response = await axios.get('http://13.60.56.141:3000/admin/getUsers', {
             headers: { "Authorization": `${token}` }
         });
         console.log(response);
@@ -35,19 +35,19 @@ async function fetchUsers() {
 
 async function fetchRecipes() {
     try {
-        const response = await axios.get('http://localhost:3000/admin/getRecipes', {
+        const response = await axios.get('http://13.60.56.141:3000/admin/getRecipes', {
             headers: { "Authorization": `${token}` }
         });
-        const recipes = await response.json();
         const recipesTableBody = document.querySelector('#recipesTable tbody');
         recipesTableBody.innerHTML = '';
+        console.log(response);
 
-        recipes.forEach(recipe => {
+        response.data.forEach(recipe => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${recipe.id}</td>
-                <td>${recipe.name}</td>
-                <td>${recipe.description}</td>
+                <td><img src="${recipe.imgUrl}" alt="${recipe.recipesName}" style="width: 150px; height:auto"></td>
+                <td>${recipe.recipesName}</td>
                 <td>
                     <button class="btn-danger" onclick="removeRecipe(${recipe.id})">Remove</button>
                 </td>
@@ -61,7 +61,7 @@ async function fetchRecipes() {
 
 async function deleteUser(userId) {
     try {
-        await axios.delete(`http://localhost:3000/admin/users/${userId}`, {
+        await axios.delete(`http://13.60.56.141:3000/admin/users/${userId}`, {
             headers: { "Authorization": `${token}` }
         });
 
@@ -72,7 +72,7 @@ async function deleteUser(userId) {
 
 async function removeRecipe(recipeId) {
     try {
-        await axios.delete(`http://localhost:3000/admin/recipes/${recipeId}`, {
+        await axios.delete(`http://13.60.56.141:3000/admin/recipes/${recipeId}`, {
             headers: { "Authorization": `${token}` }
         });
         fetchRecipes();

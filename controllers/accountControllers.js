@@ -1,14 +1,13 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const sequelize = require('../util/database');
 const User = require('../models/user');
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { hash } = require('crypto');
 
 exports.signup = async (req, res) => {
     try {
         const { name, emailId, password } = req.body;
-        console.log(name, emailId, password);
+        // console.log(name, emailId, password);
 
         if (!name || !emailId || !password) {
             return res.status(400).json({ message: 'User name, email id, password should not be empty' });

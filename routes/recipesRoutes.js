@@ -9,6 +9,6 @@ router.get('/recipes', authentication, recipesController.getRecipes);
 router.get('/recipes/:id', authentication, recipesController.getRecipeById);
 router.post('/follow/:userId', authentication, recipesController.followUser);
 router.post('/unfollow/:userId', authentication, recipesController.unfollowUser);
-router.delete('/:id', authentication, recipesController.deleteRecipe);
+router.delete('/recipes/:id', authentication, recipesController.deleteRecipe);
 
 module.exports = router;

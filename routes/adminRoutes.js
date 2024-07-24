@@ -8,6 +8,6 @@ const authentication = require('../authentication/authentication');
 router.get('/getUsers', authentication, adminController.getUsers);
 router.get('/getRecipes', authentication, adminController.getRecipes);
 router.delete('/users/:id', authentication, adminController.deleteUser);
-router.delete('recipes/:id', authentication, adminController.deleteRecipe);
+router.delete('/recipes/:id', authentication, adminController.deleteRecipe);
 
 module.exports = router;
