@@ -15,7 +15,7 @@ async function uploadRecipes(event) {
     // const cookingTime = formData.get('cookingTime');
     // console.log(recipesName, cuisine, veg, recipesType, ingredients, method, cookingTime);
     try {
-        const response = await axios.post('http://13.60.56.141:3000/user/uploadRecipes', formData, {
+        const response = await axios.post('http://13.51.198.219:3000/user/uploadRecipes', formData, {
             headers: {
                 'Authorization': token,
                 'Content-Type': 'multipart/form-data'
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function populateFormFields(recipeId) {
     const token = localStorage.getItem('token');
     try {
-        const response = await axios.get(`http://13.60.56.141:3000/home/recipes/${recipeId}`, {
+        const response = await axios.get(`http://13.51.198.219:3000/home/recipes/${recipeId}`, {
             headers: { "Authorization": token }
         });
 
@@ -70,7 +70,7 @@ async function deleteRecipe(recipeId) {
     try {
         console.log('i am ready to delete');
         console.log(recipeId);
-        await axios.delete(`http://13.60.56.141:3000/home/${recipeId}`, {
+        await axios.delete(`http://13.51.198.219:3000/home/${recipeId}`, {
             headers: { "Authorization": token }
         });
         // document.location.reload();
