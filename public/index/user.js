@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
 
     try {
-        const userResponse = await axios.get('http://13.51.198.219:3000/user/profile', {
+        const userResponse = await axios.get('http://localhost:3000/user/profile', {
             headers: { "Authorization": token }
         });
 
@@ -39,7 +39,7 @@ async function editRecipe(recipeId) {
 async function deleteRecipe(recipeId) {
     const token = localStorage.getItem('token');
     try {
-        await axios.delete(`http://13.51.198.219:3000/home/${recipeId}`, {
+        await axios.delete(`http://localhost:3000/home/${recipeId}`, {
             headers: { "Authorization": token }
         });
         document.location.reload();
@@ -52,7 +52,7 @@ async function deleteRecipe(recipeId) {
 async function loadFavorites(collectionName) {
     const token = localStorage.getItem('token');
     try {
-        const favoritesResponse = await axios.get(`http://13.51.198.219:3000/user/${collectionName}`, {
+        const favoritesResponse = await axios.get(`http://localhost:3000/user/${collectionName}`, {
             headers: { "Authorization": token }
         });
 
@@ -60,9 +60,10 @@ async function loadFavorites(collectionName) {
         const favoritesContainer = document.getElementById('favoritesContainer');
         favoritesContainer.innerHTML = '';
         console.log(favorites);
+        console.log('----------');
 
         favorites.forEach(favorite => {
-            console.log(favorite.Recipe.recipesName);
+            console.log(favorite);
             const favoriteCard = document.createElement('div');
             favoriteCard.className = 'favorite-card';
             favoriteCard.innerHTML = `
@@ -72,6 +73,6 @@ async function loadFavorites(collectionName) {
             favoritesContainer.appendChild(favoriteCard);
         });
     } catch (err) {
-        console.error('Error fetching favorites:', err);
+        console.log('Error fetching favorites:', err);
     }
 }

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function getRecipeDetail(id) {
     try {
-        const response = await axios.get(`http://13.51.198.219:3000/home/recipes/${id}`, {
+        const response = await axios.get(`http://localhost:3000/home/recipes/${id}`, {
             headers: { "Authorization": token }
         });
         if (response) {
@@ -77,7 +77,7 @@ function displayRecipeDetail(recipe, isFollowing, loggedInUserId) {
 
 async function getRecipeRating(recipeId) {
     try {
-        const response = await axios.get(`http://13.51.198.219:3000/rate/rating/${recipeId}`, {
+        const response = await axios.get(`http://localhost:3000/rate/rating/${recipeId}`, {
             headers: { "Authorization": token }
         });
         console.log(response.data.averageRating);
@@ -89,7 +89,7 @@ async function getRecipeRating(recipeId) {
 
 async function rateRecipe(recipeId, userId, rating) {
     try {
-        await axios.post('http://13.51.198.219:3000/rate/rate', { userId, recipeId, rating }, {
+        await axios.post('http://localhost:3000/rate/rate', { userId, recipeId, rating }, {
             headers: { "Authorization": token }
         });
         alert('Rating submitted successfully');
@@ -103,7 +103,7 @@ async function rateRecipe(recipeId, userId, rating) {
 async function followUser(userId) {
     try {
         console.log(userId);
-        const response = await axios.post(`http://13.51.198.219:3000/home/follow/${userId}`, {}, {
+        const response = await axios.post(`http://localhost:3000/home/follow/${userId}`, {}, {
             headers: { "Authorization": `${token}` }
         });
         console.log(response.data.message);
@@ -117,7 +117,7 @@ async function followUser(userId) {
 
 async function unfollowUser(userId) {
     try {
-        const response = await axios.post(`http://13.51.198.219:3000/home/unfollow/${userId}`, {}, {
+        const response = await axios.post(`http://localhost:3000/home/unfollow/${userId}`, {}, {
             headers: { "Authorization": `${token}` }
         });
         console.log(response.data.message);
@@ -142,7 +142,7 @@ function showCollectionOptions() {
 async function saveToCollection() {
     const selectedCollection = document.getElementById('collectionSelect').value;
     try {
-        await axios.post(`http://13.51.198.219:3000/user/save`, { recipeId, collection: selectedCollection }, {
+        await axios.post(`http://localhost:3000/user/save`, { recipeId, collection: selectedCollection }, {
             headers: { "Authorization": token }
         });
         alert(`Recipe saved to ${selectedCollection}`);

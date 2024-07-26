@@ -1,4 +1,4 @@
-const url = 'http://13.51.198.219:3000';
+const url = 'http://localhost:3000';
 const messageDiv = document.getElementById('message');
 
 //signup
@@ -22,11 +22,11 @@ async function signup(event) {
             event.target.reset();
             window.location.href = ('../login/login.html');
         }
-        // else {
-        //     console.log(response.data.message);
-        //     console.log('user already exists');
-        //     
-        // }
+        else {
+            console.log(response.data.message);
+            console.log('user already exists');
+
+        }
 
     } catch (err) {
         messageDiv.textContent = '';
