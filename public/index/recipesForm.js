@@ -3,8 +3,7 @@ const token = localStorage.getItem('token');
 async function uploadRecipes(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    formData.set('ingredients', formData.get('ingredients').split(',').map(i => i.trim()));
-    formData.set('method', formData.get('method').split(',').map(m => m.trim()));
+
     // console.log(formData);
     // const recipesName = formData.get('recipesName');
     // const cuisine = formData.get('cuisine');
@@ -15,16 +14,16 @@ async function uploadRecipes(event) {
     // const cookingTime = formData.get('cookingTime');
     // console.log(recipesName, cuisine, veg, recipesType, ingredients, method, cookingTime);
     try {
-        const response = await axios.post('http://localhost:3000/user/uploadRecipes', formData, {
+        const response = await axios.post('http://51.20.76.173:3000/user/uploadRecipes', formData, {
             headers: {
                 'Authorization': token,
                 'Content-Type': 'multipart/form-data'
             }
         })
-        if (response.status === 200) {
+        if (response) {
             alert('Recipe uploaded succesfully');
-            localStorage.removeItem('recipeIdToEdit');
             event.target.reset();
+            localStorage.removeItem('recipeIdToEdit');
         }
     } catch (err) {
         console.log(err);
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function populateFormFields(recipeId) {
     const token = localStorage.getItem('token');
     try {
-        const response = await axios.get(`http://localhost:3000/home/recipes/${recipeId}`, {
+        const response = await axios.get(`http://51.20.76.173:3000/home/recipes/${recipeId}`, {
             headers: { "Authorization": token }
         });
 
@@ -70,7 +69,7 @@ async function deleteRecipe(recipeId) {
     try {
         console.log('i am ready to delete');
         console.log(recipeId);
-        await axios.delete(`http://localhost:3000/home/${recipeId}`, {
+        await axios.delete(`http://51.20.76.173:3000/home/${recipeId}`, {
             headers: { "Authorization": token }
         });
         // document.location.reload();

@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000';
+const url = 'http://51.20.76.173:3000';
 const messageDiv = document.getElementById('message');
 
 //signup
