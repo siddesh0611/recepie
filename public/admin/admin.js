@@ -6,7 +6,7 @@ const token = localStorage.getItem('token');
 
 async function fetchUsers() {
     try {
-        const response = await axios.get('http://51.20.76.173:3000/admin/getUsers', {
+        const response = await axios.get('http://16.16.68.225:3000/admin/getUsers', {
             headers: { "Authorization": `${token}` }
         });
         console.log(response);
@@ -35,7 +35,7 @@ async function fetchUsers() {
 
 async function fetchRecipes() {
     try {
-        const response = await axios.get('http://51.20.76.173:3000/admin/getRecipes', {
+        const response = await axios.get('http://16.16.68.225:3000/admin/getRecipes', {
             headers: { "Authorization": `${token}` }
         });
         const recipesTableBody = document.querySelector('#recipesTable tbody');
@@ -61,7 +61,7 @@ async function fetchRecipes() {
 
 async function deleteUser(userId) {
     try {
-        await axios.delete(`http://51.20.76.173:3000/admin/users/${userId}`, {
+        await axios.delete(`http://16.16.68.225:3000/admin/users/${userId}`, {
             headers: { "Authorization": `${token}` }
         });
         fetchUsers();
@@ -73,7 +73,7 @@ async function deleteUser(userId) {
 
 async function removeRecipe(recipeId) {
     try {
-        await axios.delete(`http://51.20.76.173:3000/admin/recipes/${recipeId}`, {
+        await axios.delete(`http://16.16.68.225:3000/admin/recipes/${recipeId}`, {
             headers: { "Authorization": `${token}` }
         });
         fetchRecipes();

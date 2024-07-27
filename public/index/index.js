@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function getRecipes(page, searchTerm = '', filters = {}) {
     try {
-        const response = await axios.get(`http://51.20.76.173:3000/home/recipes`, {
+        const response = await axios.get(`http://16.16.68.225:3000/home/recipes`, {
             headers: { "Authorization": token },
             params: {
                 page,
