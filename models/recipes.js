@@ -30,10 +30,22 @@ const Recipes = sequelize.define('Recipes', {
     ingredients: {
         type: Sequelize.STRING,
         allowNull: false,
+        get() {
+            return this.getDataValue('ingredients') ? this.getDataValue('ingredients').split(';') : [];
+        },
+        set(value) {
+            this.setDataValue('ingredients', Array.isArray(value) ? value.join(';') : value);
+        }
     },
     method: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        get() {
+            return this.getDataValue('method') ? this.getDataValue('method').split(';') : [];
+        },
+        set(value) {
+            this.setDataValue('method', Array.isArray(value) ? value.join(';') : value);
+        }
     },
     cookingTime: {
         type: Sequelize.STRING,

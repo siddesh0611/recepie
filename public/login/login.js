@@ -11,12 +11,12 @@ async function handleLogin(event) {
         const userDetails = { emailId, password };
 
 
-        await axios.post('http://16.16.68.225:3000/account/login', userDetails)
+        await axios.post('http://13.60.52.85:3000/account/login', userDetails)
             .then(response => {
                 console.log('Logged in successfully');
                 event.target.reset();
                 localStorage.setItem('token', response.data.token);
-                window.location.href = '../index/index.html';
+                window.location.href = '../home/home.html';
                 // window.location.href = '../index/recipesForm.html';
             })
             .catch(err => {

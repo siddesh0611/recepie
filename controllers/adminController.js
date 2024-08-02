@@ -70,7 +70,7 @@ async function isAdmin(userId) {
         }
         return user.isAdmin;
     } catch (err) {
-        console.error(err);
+        console.log(err);
         throw err;
     }
 }

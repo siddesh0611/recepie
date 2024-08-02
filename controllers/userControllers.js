@@ -20,6 +20,9 @@ exports.uploadRecipes = async (req, res) => {
         const imgURL = await uploadTOS3(file.buffer, filename);
         // console.log(imgURL);
 
+        const ingredientsArray = Array.isArray(ingredients) ? ingredients : [ingredients];
+        const methodArray = Array.isArray(method) ? method : [method];
+
         const user = req.user;
         // console.log(user);
         // console.log(Object.getOwnPropertyNames(User.prototype));
@@ -30,8 +33,8 @@ exports.uploadRecipes = async (req, res) => {
             veg: veg === 'veg',
             recipesType,
             imgUrl: imgURL,
-            ingredients,
-            method,
+            ingredients: ingredientsArray,
+            method: methodArray,
             cookingTime
         });
 
@@ -40,7 +43,7 @@ exports.uploadRecipes = async (req, res) => {
             recipe: newRecipe
         });
     } catch (err) {
-        console.error(err);
+        console.log(err);
         res.status(500).json({
             message: 'Failed to upload recipe',
             error: err.message
@@ -93,7 +96,7 @@ exports.getProfile = async (req, res) => {
 
         res.json({ user, recipes: user.Recipes });
     } catch (err) {
-        console.error(err);
+        console.log(err);
         res.status(500).json({ message: 'Failed to fetch profile data' });
     }
 };
@@ -125,7 +128,7 @@ exports.getsavedRcipes = async (req, res) => {
         });
         res.status(200).json({ favorites });
     } catch (err) {
-        console.error('Error fetching favorites:', err);
+        console.log('Error fetching favorites:', err);
     }
 };
 

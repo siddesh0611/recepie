@@ -1,12 +1,8 @@
 const token = localStorage.getItem('token');
 
-// document.addEventListener('DOMContentLoaded', () => {
-
-// });
-
 async function fetchUsers() {
     try {
-        const response = await axios.get('http://16.16.68.225:3000/admin/getUsers', {
+        const response = await axios.get('http://13.60.52.85:3000/admin/getUsers', {
             headers: { "Authorization": `${token}` }
         });
         console.log(response);
@@ -29,13 +25,13 @@ async function fetchUsers() {
             usersTableBody.appendChild(row);
         });
     } catch (error) {
-        console.error('Error loading users:', error);
+        console.log('Error loading users:', error);
     }
 }
 
 async function fetchRecipes() {
     try {
-        const response = await axios.get('http://16.16.68.225:3000/admin/getRecipes', {
+        const response = await axios.get('http://13.60.52.85:3000/admin/getRecipes', {
             headers: { "Authorization": `${token}` }
         });
         const recipesTableBody = document.querySelector('#recipesTable tbody');
@@ -55,29 +51,29 @@ async function fetchRecipes() {
             recipesTableBody.appendChild(row);
         });
     } catch (error) {
-        console.error('Error loading recipes:', error);
+        console.log('Error loading recipes:', error);
     }
 }
 
 async function deleteUser(userId) {
     try {
-        await axios.delete(`http://16.16.68.225:3000/admin/users/${userId}`, {
+        await axios.delete(`http://13.60.52.85:3000/admin/users/${userId}`, {
             headers: { "Authorization": `${token}` }
         });
         fetchUsers();
 
     } catch (error) {
-        console.error('Error deleting user:', error);
+        console.log('Error deleting user:', error);
     }
 }
 
 async function removeRecipe(recipeId) {
     try {
-        await axios.delete(`http://16.16.68.225:3000/admin/recipes/${recipeId}`, {
+        await axios.delete(`http://13.60.52.85:3000/admin/recipes/${recipeId}`, {
             headers: { "Authorization": `${token}` }
         });
         fetchRecipes();
     } catch (error) {
-        console.error('Error removing recipe:', error);
+        console.log('Error removing recipe:', error);
     }
 }

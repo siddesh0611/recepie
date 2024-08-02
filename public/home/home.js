@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function getRecipes(page, searchTerm = '', filters = {}) {
     try {
-        const response = await axios.get(`http://16.16.68.225:3000/home/recipes`, {
+        const response = await axios.get(`http://13.60.52.85:3000/home/recipes`, {
             headers: { "Authorization": token },
             params: {
                 page,
@@ -54,9 +54,11 @@ function displayRecipes(recipes, loggedInUser) {
         const recipediv = document.createElement('div');
         recipediv.className = 'recipes';
         recipediv.innerHTML = `
-            <h2>${recipe.recipesName}</h2>
-            <img src="${recipe.imgUrl}" alt="${recipe.recipesName}" style="width: 150px; height:auto">
-            <p>Uploaded by: ${recipe.User.name}</p>
+            <div id="recipeCard">
+                <h2>${recipe.recipesName}</h2>
+                <img src="${recipe.imgUrl}" alt="${recipe.recipesName}" style="width: 150px; height:auto">
+                <p>Uploaded by: ${recipe.User.name}</p>
+            </div>
             `;
         // console.log(loggedInUser, recipe.UserId);
 

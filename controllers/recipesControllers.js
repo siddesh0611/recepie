@@ -79,7 +79,7 @@ exports.getRecipeById = async (req, res) => {
 
         res.json({ recipe, isFollowing: !!isFollowing, loggedInUserId });
     } catch (err) {
-        console.error(err);
+        console.log(err);
         res.status(500).json({ message: 'Failed to fetch recipe', error: err.message });
     }
 };
@@ -93,7 +93,7 @@ exports.followUser = async (req, res) => {
         await Follow.create({ followerId, followedId });
         res.json({ message: 'User followed successfully' });
     } catch (error) {
-        console.error('Error following user:', error);
+        console.log('Error following user:', error);
         res.status(500).json({ message: 'Failed to follow user', error: error.message });
     }
 };
@@ -108,7 +108,7 @@ exports.unfollowUser = async (req, res) => {
         });
         res.json({ message: 'User unfollowed successfully' });
     } catch (error) {
-        console.error('Error unfollowing user:', error);
+        console.log('Error unfollowing user:', error);
         res.status(500).json({ message: 'Failed to unfollow user', error: error.message });
     }
 };
@@ -131,7 +131,7 @@ exports.deleteRecipe = async (req, res) => {
         await recipe.destroy();
         res.json({ message: 'Recipe deleted successfully' });
     } catch (err) {
-        console.error(err);
+        console.log(err);
         res.status(500).json({ message: 'Failed to delete recipe', error: err.message });
     }
 };

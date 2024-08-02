@@ -4,17 +4,8 @@ async function uploadRecipes(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    // console.log(formData);
-    // const recipesName = formData.get('recipesName');
-    // const cuisine = formData.get('cuisine');
-    // const veg = formData.get('veg');
-    // const recipesType = formData.get('recipesType');
-    // const ingredients = formData.get('ingredients');
-    // const method = formData.get('method');
-    // const cookingTime = formData.get('cookingTime');
-    // console.log(recipesName, cuisine, veg, recipesType, ingredients, method, cookingTime);
     try {
-        const response = await axios.post('http://16.16.68.225:3000/user/uploadRecipes', formData, {
+        const response = await axios.post('http://13.60.52.85:3000/user/uploadRecipes', formData, {
             headers: {
                 'Authorization': token,
                 'Content-Type': 'multipart/form-data'
@@ -43,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function populateFormFields(recipeId) {
     const token = localStorage.getItem('token');
     try {
-        const response = await axios.get(`http://16.16.68.225:3000/home/recipes/${recipeId}`, {
+        const response = await axios.get(`http://13.60.52.85:3000/home/recipes/${recipeId}`, {
             headers: { "Authorization": token }
         });
 
@@ -61,7 +52,7 @@ async function populateFormFields(recipeId) {
         await deleteRecipe(recipeId);
 
     } catch (err) {
-        console.error('Error fetching recipe details:', err);
+        console.log('Error fetching recipe details:', err);
     }
 }
 
@@ -69,13 +60,29 @@ async function deleteRecipe(recipeId) {
     try {
         console.log('i am ready to delete');
         console.log(recipeId);
-        await axios.delete(`http://16.16.68.225:3000/home/${recipeId}`, {
+        await axios.delete(`http://13.60.52.85:3000/home/${recipeId}`, {
             headers: { "Authorization": token }
         });
         // document.location.reload();
     } catch (err) {
-        console.error('Error deleting recipe:', err);
+        console.log('Error deleting recipe:', err);
     }
+}
+
+function addIngredient() {
+    const ingredientsContainer = document.getElementById('ingredientsContainer');
+    const textarea = document.createElement('textarea');
+    textarea.name = 'ingredients';
+    textarea.rows = 2;
+    ingredientsContainer.appendChild(textarea);
+}
+
+function addStep() {
+    const methodContainer = document.getElementById('methodContainer');
+    const textarea = document.createElement('textarea');
+    textarea.name = 'method';
+    textarea.rows = 2;
+    methodContainer.appendChild(textarea);
 }
 
 

@@ -7,6 +7,75 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="time"],
+        textarea,
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button[type="button"] {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        button[type="button"]:hover {
+            background-color: #333;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,10 +107,16 @@
             <input type="file" name="img" id="img" accept="image/*">
 
             <label for="ingredients">Ingredients</label>
-            <textarea name="ingredients" id="ingredients" rows="4"></textarea>
+            <div id="ingredientsContainer">
+                <textarea name="ingredients" rows="2" required></textarea>
+            </div>
+            <button type="button" onclick="addIngredient()">Add Ingredient</button>
 
             <label for="method">Method:</label>
-            <textarea name="method" id="method" rows="4"></textarea>
+            <div id="methodContainer">
+                <textarea name="method" rows="2" required></textarea>
+            </div>
+            <button type="button" onclick="addStep()">Add Step</button>
 
             <label for="cookingTime">Cooking Time:</label>
             <input type="time" name="cookingTime" id="cookingTime">

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
 
     try {
-        const userResponse = await axios.get('http://16.16.68.225:3000/user/profile', {
+        const userResponse = await axios.get('http://13.60.52.85:3000/user/profile', {
             headers: { "Authorization": token }
         });
 
@@ -16,17 +16,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             const recipeCard = document.createElement('div');
             recipeCard.className = 'recipe-card';
             recipeCard.innerHTML = `
-                <img src="${recipe.imgUrl}" alt="${recipe.recipesName}" style="width: 150px; height:auto">
-                <h3>${recipe.recipesName}</h3>
-                <div class="buttons">
-                    <button onclick="editRecipe(${recipe.id})">Edit</button>
-                    <button class="delete-button" onclick="deleteRecipe(${recipe.id})">Delete</button>
+                <div id="myRecipes">
+                    <h3>${recipe.recipesName}</h3>
+                    <img src="${recipe.imgUrl}" alt="${recipe.recipesName}" >
+                    <div class="buttons">
+                        <button onclick="editRecipe(${recipe.id})">Edit</button>
+                        <button class="delete-button" onclick="deleteRecipe(${recipe.id})">Delete</button>
+                    </div>
                 </div>
             `;
             recipesContainer.appendChild(recipeCard);
         });
     } catch (err) {
-        console.error('Error fetching profile data:', err);
+        console.log('Error fetching profile data:', err);
     }
 });
 
@@ -39,12 +41,12 @@ async function editRecipe(recipeId) {
 async function deleteRecipe(recipeId) {
     const token = localStorage.getItem('token');
     try {
-        await axios.delete(`http://16.16.68.225:3000/home/${recipeId}`, {
+        await axios.delete(`http://13.60.52.85:3000/home/${recipeId}`, {
             headers: { "Authorization": token }
         });
         document.location.reload();
     } catch (err) {
-        console.error('Error deleting recipe:', err);
+        console.log('Error deleting recipe:', err);
     }
 }
 
@@ -52,24 +54,29 @@ async function deleteRecipe(recipeId) {
 async function loadFavorites(collectionName) {
     const token = localStorage.getItem('token');
     try {
-        const favoritesResponse = await axios.get(`http://16.16.68.225:3000/user/${collectionName}`, {
+        const favoritesResponse = await axios.get(`http://13.60.52.85:3000/user/${collectionName}`, {
             headers: { "Authorization": token }
         });
 
         const favorites = favoritesResponse.data.favorites;
         const favoritesContainer = document.getElementById('favoritesContainer');
         favoritesContainer.innerHTML = '';
-        console.log(favorites);
-        console.log('----------');
+        // console.log(favorites);
+        // console.log('----------');
 
         favorites.forEach(favorite => {
             console.log(favorite);
             const favoriteCard = document.createElement('div');
             favoriteCard.className = 'favorite-card';
             favoriteCard.innerHTML = `
-                <img src="${favorite.Recipe.imgUrl}" alt="${favorite.Recipe.recipesName}" style="width: 150px; height:auto">
-                <h3>${favorite.Recipe.recipesName}</h3>
-            `;
+                <div id="myFavRecipes">
+                    <h3>${favorite.Recipe.recipesName}</h3>
+                    <img src="${favorite.Recipe.imgUrl}" alt="${favorite.Recipe.recipesName}" style="width: 150px; height:auto">  
+                </div>            
+                `;
+            favoriteCard.addEventListener('click', () => {
+                window.location.href = `./recipeDetail.html?id=${favorite.Recipe.id}`;
+            });
             favoritesContainer.appendChild(favoriteCard);
         });
     } catch (err) {

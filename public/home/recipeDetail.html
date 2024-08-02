@@ -7,32 +7,21 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/details.css">
 </head>
 
 <body>
-    <div>
+    <div id="h1">
         <h1>Home recipes</h1>
     </div>
-    <div>
+    <div id="nav">
         <a href="./index.html">Home</a>
         <a href="./recipesForm.html">Upload recipes</a>
         <a href="./user.html">Profile</a>
     </div>
     <div id="recipeDetailContainer"></div>
-    <div>
-        <button id="saveToFavorites">Save to Favorites</button>
-        <select id="collectionSelect" style="display:none;">
-            <option value="beverages">Beverages</option>
-            <option value="desserts">Desserts</option>
-            <option value="mainCourses">Main Courses</option>
-            <option value="snacks">Snacks</option>
-        </select>
-        <button id="confirmSave" style="display:none;">Save</button>
-    </div>
-
     <script src="./recipeDetail.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <link rel="stylesheet" href="../css/signup.css"> -->
 </body>
 
 </html>

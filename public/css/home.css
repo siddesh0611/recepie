@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#nav {
+    background-color: rgb(55, 53, 53);
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-transform: uppercase;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: black;
+    text-decoration: solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+a:hover {
+    color: white;
+    background-color: black;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+div {
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form select,
+form input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+#searchBar {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#recipesContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#recipeCard {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#recipeCard:hover {
+    background-color: #FFBF00;
+    cursor: pointer;
+}

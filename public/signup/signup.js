@@ -1,4 +1,4 @@
-const url = 'http://16.16.68.225:3000';
+const url = 'http://13.60.52.85:3000';
 const messageDiv = document.getElementById('message');
 
 //signup
